@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GIDSignInUIDelegate{
 
+    
+    
+    let userDefault = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+      
+        GIDSignIn.sharedInstance().uiDelegate = self
+
+        print("come baby")
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if userDefault.bool(forKey: "usersignedin"){
+            performSegue(withIdentifier: "signed", sender: self)
+        }
+    }
+    
+    
 
 
 }
