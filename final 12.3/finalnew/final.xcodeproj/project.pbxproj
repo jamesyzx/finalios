@@ -11,6 +11,8 @@
 		1A0836F721B377D900C03624 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0836F621B377D900C03624 /* ProfileModel.swift */; };
 		1A0836F921B37B2700C03624 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0836F821B37B2700C03624 /* HomeModel.swift */; };
 		1A2E9FA121B6FC6400E65E0D /* DescViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E9FA021B6FC6400E65E0D /* DescViewController.swift */; };
+		1A2E9FA321B72D2800E65E0D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E9FA221B72D2800E65E0D /* Location.swift */; };
+		1A2E9FA521B76D4A00E65E0D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E9FA421B76D4A00E65E0D /* DetailViewController.swift */; };
 		1A42600321B4D46B00DC68EA /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42600221B4D46B00DC68EA /* GameModel.swift */; };
 		1A42600521B4DC7600DC68EA /* HomeModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42600421B4DC7600DC68EA /* HomeModel2.swift */; };
 		1A42600721B4F73E00DC68EA /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42600621B4F73E00DC68EA /* MatchViewController.swift */; };
@@ -34,6 +36,8 @@
 		1A0836F621B377D900C03624 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		1A0836F821B37B2700C03624 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		1A2E9FA021B6FC6400E65E0D /* DescViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescViewController.swift; sourceTree = "<group>"; };
+		1A2E9FA221B72D2800E65E0D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		1A2E9FA421B76D4A00E65E0D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1A42600221B4D46B00DC68EA /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		1A42600421B4DC7600DC68EA /* HomeModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel2.swift; sourceTree = "<group>"; };
 		1A42600621B4F73E00DC68EA /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +103,10 @@
 				1A99305821B1CC2A0093368C /* Info.plist */,
 				1A99305021B1CC270093368C /* final.xcdatamodeld */,
 				1A99306021B1D2A30093368C /* SignedViewController.swift */,
-				1A0836F421B36A1100C03624 /* ProfileViewController.swift */,
+				1A2E9FA421B76D4A00E65E0D /* DetailViewController.swift */,
 				1A42600621B4F73E00DC68EA /* MatchViewController.swift */,
+				6C3D719821B621EA008FA28A /* MapViewController.swift */,
+				1A0836F421B36A1100C03624 /* ProfileViewController.swift */,
 				1A0836F621B377D900C03624 /* ProfileModel.swift */,
 				1A0836F821B37B2700C03624 /* HomeModel.swift */,
 				1A42600221B4D46B00DC68EA /* GameModel.swift */,
@@ -108,9 +114,9 @@
 				6C3D719621B604D1008FA28A /* TableViewCell.swift */,
 				6C3A5D4721B5F55F003EE5CD /* MenuViewController.swift */,
 				6C3A5D4521B5F52C003EE5CD /* BaseViewController.swift */,
-				6C3D719821B621EA008FA28A /* MapViewController.swift */,
 				6C3D719A21B64B63008FA28A /* Location.gpx */,
 				1A2E9FA021B6FC6400E65E0D /* DescViewController.swift */,
+				1A2E9FA221B72D2800E65E0D /* Location.swift */,
 			);
 			path = final;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-final/Pods-final-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -223,6 +230,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -291,7 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C3D719721B604D1008FA28A /* TableViewCell.swift in Sources */,
+				1A2E9FA521B76D4A00E65E0D /* DetailViewController.swift in Sources */,
 				1A99305221B1CC270093368C /* final.xcdatamodeld in Sources */,
+				1A2E9FA321B72D2800E65E0D /* Location.swift in Sources */,
 				1A99304C21B1CC270093368C /* ViewController.swift in Sources */,
 				6C3A5D4621B5F52C003EE5CD /* BaseViewController.swift in Sources */,
 				1A0836F521B36A1100C03624 /* ProfileViewController.swift in Sources */,

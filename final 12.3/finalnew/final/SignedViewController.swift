@@ -14,8 +14,11 @@ class SignedViewController: BaseViewController {
     
     let gameInfo: [[String]] = [["Arena of Valor","Arena of Valor International Championship 2018","The Arena of Valor International Championship 2018 (AIC 2018) is the second Arena of Valor international tournament in 2018. This is a 4-week competition with the greatest teams from across the globe competing for a prize pool of $600,000 beginning November 23rd, 2018."]
         ,["PUBG","Get Ready for the 2019 Season of PUBG Esports","PUBG esports is about to get serious. Starting next year, we’re introducing official pro competitions in nine different regions around the globe. We’ll also be hosting numerous global events throughout the year, including the All-Star Games in August and the Global Championship in November where the #1 team of the season will be crowned."]
-        ,["Hearthstone ","HEARTHSTONE ESPORTS’ NEXT BIG TURN","2018 was a great year for Hearthstone Esports. Earlier this month Team China upset tournament favorite Brazil in the Grand Finals of the Hearthstone Global Games at BlizzCon. We’ve crowned two seasonal champions at our Summer and Fall Championships. We’ve seen more than 200,000 players attend 25 Tour Stops and other major events across the globe. And by the end of the Year of the Raven we’ll have awarded more than $2.8 million in prize money—our largest amount ever."]]
-    
+        ,["Hearthstone ","HEARTHSTONE ESPORTS’ NEXT BIG TURN","2018 was a great year for Hearthstone Esports. Earlier this month Team China upset tournament favorite Brazil in the Grand Finals of the Hearthstone Global Games at BlizzCon. We’ve crowned two seasonal champions at our Summer and Fall Championships. We’ve seen more than 200,000 players attend 25 Tour Stops and other major events across the globe. And by the end of the Year of the Raven we’ll have awarded more than $2.8 million in prize money—our largest amount ever."]
+        ,["PUBG","PUBG Mobile Players Are Pretty Sure The Game Is Full Of Bots","PUBG Mobile released in North America yesterday, and it’s pretty awesome. But between my own string of victories and the countless chicken dinners on social media, it sure feels like things are too easy.\n\nPUBG Mobile is a robust iOS and Android port of the popular battle royale game that allows 100 players to fight to the death. The mobile version has a convenient interface that makes moving and shooting much more responsive than I expected. Numerous players starting up the game for the first time are kicking ass and coming in first place to earn a coveted \'chicken dinner.\' \n\nOn Twitter, players are marveling over their victories. \'Literally the first time that I played PUBG and the fact that I won in mobile version is even more hardcore,\' one person wrote. \'I’m a god at PUBG Mobile but crap at Fortnite,\' said another. This sentiment is common: \'First game of #PUBGmobile on the iPhone SE we come out with a big win.\', \'First #PUBGmobile Win! 9 kills. \', \'My very first match, first time ever playing PUBG and this was the outcome\'."]
+        ,["Overwatch","NEWS! OVERWATCH FOR ANDROID 2018 IS AVAILABLE NOW!","Developed by the studio Blizzard shooting FPS network, representing the very first production of this species inside the achievements in the creators with the cult series including Diablo, Warcraft and Starcraft. Overwatch The action is scheduled in a future by which peace guard stands guards title organization, established decades ago to guard against attack by renegade robots. When torn by conflict group sets out to decline, the necessary taking over entirely new characters, represented by players. The game specializes in network-team duels, where instead of killing is rewarded perform certain tasks. Probably all gamers know this title – Overwatch. Today we’d like to make a review for you and share with you our converted version: Overwatch android apk and Overwatch PC.  We know that Overwatch mobile is what you want so we converted it for you! Of course you can also find Overwatch download for PC. So now, let’s read what’s new in the latest FPP game."]
+    ]
+
     var filteredGameInfo: [[String]] = [[]]
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -106,22 +109,25 @@ extension SignedViewController: UITableViewDataSource, UITableViewDelegate {
 //        let dateformatter = DateFormatter()
 //        dateformatter.dateFormat = "yyyy"
 //        let year = dateformatter.string(from: vehicle.value(forKeyPath: "year") as! Date)
-//        var dc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-//
-//
-//        dc?.txtMake = vehicle.value(forKey: "make") as? String ?? ""
-//        dc?.txtMiles = String((vehicle.value(forKey: "rating") as? Double)!)
-//        dc?.txtModel = vehicle.value(forKey: "model") as? String ?? ""
-//        dc?.txtPhoto = vehicle.value(forKey: "photo") as? String ?? ""
-//        dc?.txtRating = String((vehicle.value(forKey: "rating") as? Int)!)
-//        dc?.txtPrice = String((vehicle.value(forKey: "rating") as? Double)!)
-//        dc?.txtType = vehicle.value(forKey: "type") as? String ?? ""
-//        dc?.txtYear = year
-//        dc?.image = readImg(vehicle.value(forKey: "photo") as? String ?? "")
-//
-//
-//        self.navigationController?.pushViewController(dc!, animated: true)
-//        //
+        
+        
+        var dc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+
+        let game: [String]
+        if self.searchController.isActive {
+            game = filteredGameInfo[indexPath.row]
+        } else {
+            game = gameInfo[indexPath.row]
+        }
+    
+        dc?.txt1 = game[0]
+        dc?.txt2 = game[1]
+        dc?.txt3 = game[2]
+        dc?.image = UIImage(named: game[0])
+
+
+        self.navigationController?.pushViewController(dc!, animated: true)
+
     }
     
     // MARK: - Table view data source

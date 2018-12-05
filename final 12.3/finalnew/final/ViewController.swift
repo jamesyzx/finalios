@@ -21,6 +21,22 @@ class ViewController: UIViewController, GIDSignInUIDelegate{
         GIDSignIn.sharedInstance().uiDelegate = self
 
         print("come baby")
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "background")?.draw(in: self.view.bounds)
+
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            
+            
+            
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
+        
+
     }
     
     
@@ -29,8 +45,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate{
             performSegue(withIdentifier: "signed", sender: self)
         }
     }
-    
-    
+
 
 
 }

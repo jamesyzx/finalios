@@ -18,6 +18,7 @@ class ProfileModel: NSObject {
     var birthday : String?
     var city : String?
     var image : String?
+   
     
     
     override init() {
