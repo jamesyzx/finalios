@@ -15,9 +15,13 @@ protocol HomeModelProtocol2: class {
 class HomeModel2: NSObject, URLSessionDataDelegate{
     
     weak var delegate: HomeModelProtocol2!
-    func downloadItemssearch(useremail:String,sex:String,gamename:String, city:String,rank:String) {
+    
+    func downloadItemssearch(useremail:String,sex:String,gamename:String,city:String,rank:String) {
         print("333")
+        print(useremail)
+        
         let urlPath : String = "http://localhost:8080/webios/searchGameInformation.htm?useremail=\(useremail)&sex=\(sex)&gamename=\(gamename)&city=\(city)&rank=\(rank)"
+        print(urlPath)
         let url: URL = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         
@@ -85,7 +89,8 @@ class HomeModel2: NSObject, URLSessionDataDelegate{
 
              let useremail = jsonElement.value(forKey: "useremail") as? String,
 
-               let userid = jsonElement.value(forKey: "userID") as? String
+               let userid = jsonElement.value(forKey: "userID") as? String,
+                let id = jsonElement.value(forKey: "ID") as? String
                 
             {
                 
@@ -93,7 +98,8 @@ class HomeModel2: NSObject, URLSessionDataDelegate{
                game.useremail = useremail
                 game.rank = rank
                 game.userid = userid
-               
+               game.id = id
+              
             }
             
             locations.add(game)
@@ -177,6 +183,83 @@ class HomeModel2: NSObject, URLSessionDataDelegate{
         })
     }
     //description
+    
+    
+    //location
+    func downloadlocation() {
+        
+        print("555")
+        let urlPath : String = "http://localhost:8080/webios/getalllocation.htm"
+        let url: URL = URL(string: urlPath)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+            if error != nil {
+                print("Failed to download data")
+            }else {
+                print("Data downloaded")
+                
+                self.parseJSONarraylocation(data!)
+            }
+            
+        }
+        
+        task.resume()
+    }
+    func parseJSONarraylocation(_ data:Data) {
+        print(data)
+        var jsonResult = NSArray()
+        
+        do{
+            jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+            print(jsonResult)
+        } catch let error as NSError {
+            print(error)
+            
+        }
+        var jsonElement = NSDictionary()
+        let locations = NSMutableArray()
+        
+        for i in 0 ..< jsonResult.count
+        {
+            
+            jsonElement = jsonResult[i] as! NSDictionary
+            
+            let location = Location()
+            
+            if let useremail = jsonElement.value(forKey: "useremail") as? String,
+                let city = jsonElement.value(forKey: "city")as? String,
+               let latitude = jsonElement.value(forKey: "latitude") as? String,
+               let longitude = jsonElement.value(forKey: "longitude")as? String
+                
+                
+                
+            {
+                
+                location.useremail = useremail
+                location.city = city
+                location.latitude = latitude
+                location.longitude = longitude
+                print("dwqdqdwqdwqdwqdwq\(location.longitude)")
+                
+            }
+            
+            locations.add(location)
+            print(locations)
+        }
+        
+        DispatchQueue.main.async(execute: { () -> Void in
+            self.delegate.itemDownloaded2(items: locations)
+            
+        })
+    }
+    
+    //location
+    
+    
+    
+    
 }
 
 

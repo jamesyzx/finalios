@@ -16,6 +16,7 @@
 		1A42600321B4D46B00DC68EA /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42600221B4D46B00DC68EA /* GameModel.swift */; };
 		1A42600521B4DC7600DC68EA /* HomeModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42600421B4DC7600DC68EA /* HomeModel2.swift */; };
 		1A42600721B4F73E00DC68EA /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42600621B4F73E00DC68EA /* MatchViewController.swift */; };
+		1A81F06021BEFCF400250A5C /* Location2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 1A81F05F21BEFCF300250A5C /* Location2.gpx */; };
 		1A99304A21B1CC270093368C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99304921B1CC270093368C /* AppDelegate.swift */; };
 		1A99304C21B1CC270093368C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99304B21B1CC270093368C /* ViewController.swift */; };
 		1A99304F21B1CC270093368C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A99304D21B1CC270093368C /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		1A99305721B1CC2A0093368C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A99305521B1CC2A0093368C /* LaunchScreen.storyboard */; };
 		1A99305F21B1CC360093368C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A99305E21B1CC360093368C /* GoogleService-Info.plist */; };
 		1A99306121B1D2A30093368C /* SignedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99306021B1D2A30093368C /* SignedViewController.swift */; };
+		1A9BE3D321B8CF2C0044DA3E /* addGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BE3D221B8CF2C0044DA3E /* addGameViewController.swift */; };
 		20A5A639B3B750D92145B161 /* Pods_final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A405307ECF531BB020AE17CC /* Pods_final.framework */; };
 		6C3A5D4621B5F52C003EE5CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3A5D4521B5F52C003EE5CD /* BaseViewController.swift */; };
 		6C3A5D4821B5F560003EE5CD /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3A5D4721B5F55F003EE5CD /* MenuViewController.swift */; };
@@ -41,6 +43,7 @@
 		1A42600221B4D46B00DC68EA /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		1A42600421B4DC7600DC68EA /* HomeModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel2.swift; sourceTree = "<group>"; };
 		1A42600621B4F73E00DC68EA /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
+		1A81F05F21BEFCF300250A5C /* Location2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Location2.gpx; sourceTree = "<group>"; };
 		1A99304621B1CC270093368C /* final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = final.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A99304921B1CC270093368C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A99304B21B1CC270093368C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		1A99305821B1CC2A0093368C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A99305E21B1CC360093368C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A99306021B1D2A30093368C /* SignedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedViewController.swift; sourceTree = "<group>"; };
+		1A9BE3D221B8CF2C0044DA3E /* addGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addGameViewController.swift; sourceTree = "<group>"; };
 		481D8E6576E872CC766037E8 /* Pods-final.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-final.debug.xcconfig"; path = "Pods/Target Support Files/Pods-final/Pods-final.debug.xcconfig"; sourceTree = "<group>"; };
 		6C3A5D4521B5F52C003EE5CD /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6C3A5D4721B5F55F003EE5CD /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +110,9 @@
 				1A2E9FA421B76D4A00E65E0D /* DetailViewController.swift */,
 				1A42600621B4F73E00DC68EA /* MatchViewController.swift */,
 				6C3D719821B621EA008FA28A /* MapViewController.swift */,
+				1A2E9FA021B6FC6400E65E0D /* DescViewController.swift */,
 				1A0836F421B36A1100C03624 /* ProfileViewController.swift */,
+				1A9BE3D221B8CF2C0044DA3E /* addGameViewController.swift */,
 				1A0836F621B377D900C03624 /* ProfileModel.swift */,
 				1A0836F821B37B2700C03624 /* HomeModel.swift */,
 				1A42600221B4D46B00DC68EA /* GameModel.swift */,
@@ -115,7 +121,7 @@
 				6C3A5D4721B5F55F003EE5CD /* MenuViewController.swift */,
 				6C3A5D4521B5F52C003EE5CD /* BaseViewController.swift */,
 				6C3D719A21B64B63008FA28A /* Location.gpx */,
-				1A2E9FA021B6FC6400E65E0D /* DescViewController.swift */,
+				1A81F05F21BEFCF300250A5C /* Location2.gpx */,
 				1A2E9FA221B72D2800E65E0D /* Location.swift */,
 			);
 			path = final;
@@ -199,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A81F06021BEFCF400250A5C /* Location2.gpx in Resources */,
 				1A99305721B1CC2A0093368C /* LaunchScreen.storyboard in Resources */,
 				1A99305F21B1CC360093368C /* GoogleService-Info.plist in Resources */,
 				1A99305421B1CC2A0093368C /* Assets.xcassets in Resources */,
@@ -308,6 +315,7 @@
 				1A0836F921B37B2700C03624 /* HomeModel.swift in Sources */,
 				1A42600721B4F73E00DC68EA /* MatchViewController.swift in Sources */,
 				1A0836F721B377D900C03624 /* ProfileModel.swift in Sources */,
+				1A9BE3D321B8CF2C0044DA3E /* addGameViewController.swift in Sources */,
 				6C3A5D4821B5F560003EE5CD /* MenuViewController.swift in Sources */,
 				1A42600321B4D46B00DC68EA /* GameModel.swift in Sources */,
 				1A2E9FA121B6FC6400E65E0D /* DescViewController.swift in Sources */,

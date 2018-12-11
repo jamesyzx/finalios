@@ -15,7 +15,8 @@ class GameModel: NSObject {
     var useremail : String?
     var gamename: String?
     var userid : String?
-    var rank :String?
+    var rank : String?
+    var id : String?
     
     
     override init() {
@@ -23,16 +24,17 @@ class GameModel: NSObject {
     }
     
     
-    init(useremail:String, gamename:String, userid:String, rank : String) {
+    init(useremail:String, gamename:String, userid:String, rank : String, id :String) {
         self.useremail = useremail
         self.gamename = gamename
         self.userid = userid
         self.rank = rank
+        self.id = id
     }
     
     
     override var description: String{
-        return "Useremail:\(useremail),Gamename:\(gamename),Userid:\(userid),Rank:\(rank)"
+        return "Useremail:\(useremail),Gamename:\(gamename),Userid:\(userid),Rank:\(rank),Id:\(id)"
     }
     
     

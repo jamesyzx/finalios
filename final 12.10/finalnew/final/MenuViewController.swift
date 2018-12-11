@@ -16,8 +16,10 @@ protocol SlideMenuDelegate {
 
 class MenuViewController: UIViewController {
     
+    @IBOutlet weak var signOut: UIButton!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var btnCloseMenuOverlay: UIButton!
+    @IBOutlet weak var menuView: UIView!
     var btnMenu: UIButton!
     var delegate: SlideMenuDelegate?
     let userDefaults = UserDefaults()
@@ -69,6 +71,23 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         guard let email = Auth.auth().currentUser?.email else{return}
         labelEmail.text = email
+        
+        signOut.layer.cornerRadius = 10
+        
+        // Background
+        UIGraphicsBeginImageContext(self.menuView.frame.size)
+        UIImage(named: "blueBackground")?.draw(in: self.menuView.bounds)
+        
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            
+            
+            
+            self.menuView.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
         // Do any additional setup after loading the view.
     }
     

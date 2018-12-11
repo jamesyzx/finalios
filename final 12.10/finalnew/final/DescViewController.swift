@@ -23,6 +23,22 @@ class DescViewController: UIViewController,HomeModelProtocol2,UINavigationContro
         let home2 = HomeModel2()
         home2.delegate = self
         home2.downloadItemsallDescription()
+        
+        
+        // Background
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "greenBackground")?.draw(in: self.view.bounds)
+        
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            
+            
+            
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
     }
     
 
@@ -43,8 +59,10 @@ class DescViewController: UIViewController,HomeModelProtocol2,UINavigationContro
         // Get the location to be shown
         let item: ProfileModel = DescItems[indexPath.row] as! ProfileModel
         // Get references to labels of cell
-        myCell.textLabel?.text = "UserEmail\(item.useremail)  Description:\(item.desc)"
-        
+        myCell.textLabel?.text = "UserEmail:  \(item.useremail!)\nDescription:\n\(item.desc!)"
+        myCell.textLabel?.numberOfLines = 0
+        myCell.textLabel?.font = UIFont (name: "Chalkduster", size: 18)
+        myCell.textLabel?.textColor = .white
         return myCell
     }
     

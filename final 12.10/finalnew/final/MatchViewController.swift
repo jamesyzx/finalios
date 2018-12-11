@@ -13,7 +13,7 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
 
     var gameItems : NSArray = NSArray()
     var useremail  = ""
-    
+
     let gameDrop = DropDown()
     let rankDrop = DropDown()
     let sexDrop = DropDown()
@@ -50,6 +50,7 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
     @IBOutlet weak var cityTxt: UITextField!
     
     
+    @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var listView: UITableView!
     
     
@@ -66,6 +67,29 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
         setRankDrop()
         setSexDrop()
         setCityDrop()
+        
+        print("useremail\(useremail)")
+        
+        dropDownGame.layer.cornerRadius = 5.0
+        dropDownSex.layer.cornerRadius = 5.0
+        dropDownCity.layer.cornerRadius = 5.0
+        dropDownRank.layer.cornerRadius = 5.0
+        btnSearch.layer.cornerRadius = 5
+        
+        // Background
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "redBackground")?.draw(in: self.view.bounds)
+        
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            
+            
+            
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -74,7 +98,7 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
         gameDrop.anchorView = dropDownGame // UIView or UIBarButtonItem
         
         // The list of items to display. Can be changed dynamically
-        gameDrop.dataSource = ["Arena of Valor", "PUBG", "Hearthstone"]
+        gameDrop.dataSource = ["AoV", "PUBG", "Hearthstone"]
         
         //        DropDown.startListeningToKeyboard()
         gameDrop.selectionAction = { [weak self] (index, item) in
@@ -102,7 +126,7 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
     
     func setCityDrop(){
         cityDrop.anchorView = dropDownCity
-        cityDrop.dataSource = ["New York","Boston","San Francisco"]
+        cityDrop.dataSource = ["NY","Boston","LA"]
         //        DropDown.startListeningToKeyboard()
         cityDrop.selectionAction = { [weak self] (index, item) in
             self?.btnCity.setTitle(item, for: .normal)
@@ -119,11 +143,17 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
         var sex = btnSex.titleLabel!.text
         var city = btnCity.titleLabel!.text
         
+        let alert = UIAlertController(title: "Alert", message: "Please select each fields", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil))
+        
+        
+//        guard gamename != "Game:" && rank != "Rank:" && sex != "Sex:" && city != "City:" else{self.present(alert, animated: true, completion: nil);return}
         
         let home2 = HomeModel2()
         home2.delegate = self
-        //home2.downloadItemssearch(useremail: useremail, sex: sex!, gamename: gamename!, city: city!, rank: rank!)
-        home2.downloadItemssearch(useremail: "yu.zix@husky.neu.edu", sex: "man", gamename: "a", city: "LA", rank: "c")
+        print("useremail:\(useremail)")
+        home2.downloadItemssearch(useremail: useremail, sex: sex!, gamename: gamename!, city: city!, rank: rank!)
+        //home2.downloadItemssearch(useremail: "yu.zix@husky.neu.edu", sex: "man", gamename: "a", city: "LA", rank: "c")
     }
     
     
@@ -149,8 +179,9 @@ class MatchViewController: UIViewController,HomeModelProtocol2,UINavigationContr
         // Get the location to be shown
         let item: GameModel = gameItems[indexPath.row] as! GameModel
         // Get references to labels of cell
-        myCell.textLabel?.text = "GameName:\(item.gamename!)    Userid:\(item.userid!)    Rank:\(item.rank!) "
-        
+        myCell.textLabel?.text = "Game:\(item.gamename!) \nUser ID:\(item.userid!)  \nRank:\(item.rank!) "
+        myCell.textLabel?.numberOfLines = 0
+        myCell.textLabel?.font = UIFont (name: "AmericanTypewriter-Bold", size: 28)
         return myCell
     }
     //show table-end

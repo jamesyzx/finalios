@@ -21,9 +21,11 @@ class SignedViewController: BaseViewController {
 
     var filteredGameInfo: [[String]] = [[]]
     let searchController = UISearchController(searchResultsController: nil)
-    
+     var adHeaders:[String] = ["a","b","c","d","e"]
     let userDefaults = UserDefaults()
+    var useremail = ""
     
+    @IBOutlet weak var locationBtn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emailtxt: UILabel!
     
@@ -31,6 +33,7 @@ class SignedViewController: BaseViewController {
         super.viewDidLoad()
         guard let email = Auth.auth().currentUser?.email else{return}
         emailtxt.text = email
+        useremail = email
 
         
         
@@ -48,6 +51,23 @@ class SignedViewController: BaseViewController {
         definesPresentationContext = true
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func locationAction(_ sender: Any) {
+        var mc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController
+        mc?.useremail = useremail
+        
+         self.navigationController?.pushViewController(mc!, animated: true)
+      
+        
+    }
+    
+    
+    @IBAction func matchAction(_ sender: Any){
+        var mc = storyboard?.instantiateViewController(withIdentifier: "MatchViewController") as? MatchViewController
+        mc?.useremail = useremail
+        
+        self.navigationController?.pushViewController(mc!, animated: true)
     }
     
     
@@ -97,6 +117,7 @@ extension SignedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.img.image = UIImage(named: game[0])
         cell.label4.text = game[1]
         cell.label2.text = game[2]
+        
         return cell
     }
     
@@ -130,6 +151,9 @@ extension SignedViewController: UITableViewDataSource, UITableViewDelegate {
 
     }
     
+    
+    
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -145,63 +169,60 @@ extension SignedViewController: UITableViewDataSource, UITableViewDelegate {
         return gameInfo.count
         
     }
-    
-    
+    //INDEX
+//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+//        return adHeaders
+//    }
+//    func tableView(_ tableView: UITableView,
+//                   sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+//        var tpIndex:Int = 0
+//        //遍历索引值
+//        for character in adHeaders{
+//            //判断索引值和组名称相等，返回组坐标
+//            if character == title{
+//                return tpIndex
+//            }
+//            tpIndex += 1
+//        }
+//        return 0
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection
+//        section: Int) -> String? {
+//        var headers =  self.adHeaders
+//        return headers[section]
+//    }
+//
+//    //设置分组尾的高度(将分组尾的高度设置为 0.01，消除分组尾空间)
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int)
+//        -> CGFloat {
+//            return 0.01
+//    }
+//
+//    //将分组为设置为一个空的View（否则iOS11系统下光设个高度没用）
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int)
+//        -> UIView? {
+//            return UIView()
+//    }
+//
+//
+//
+    //INDEX
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if (editingStyle == .delete) {
-//
-//
-//
-//            let vehicle = vehicles[indexPath.row]
-//            guard let deleteObject = getVehicle(id: String((vehicle.value(forKey: "id") as? Int)!)) else{ print("deleteObject not found");return}
-//            print(deleteObject)
-//            getContext().delete(deleteObject)
-//
-//            vehicles.remove(at: indexPath.row)
-//            self.tableView.deleteRows(at: [indexPath], with: .fade)
-//            save()
-//            //            myTableView.reloadData()
-//            // handle delete (by removing the data from your array and updating the tableview)
-//        }
+
     }
     
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 100
-    //    }
+   
     
     
     
     
     
     
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
 }
 
 extension SignedViewController: UISearchResultsUpdating {
